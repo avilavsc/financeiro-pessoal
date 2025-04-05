@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :transactions
+  resources :categories
+
   get "home/index"
   get "dashboard/index"
+
   devise_for :users
 
   authenticated :user do

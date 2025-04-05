@@ -1,0 +1,17 @@
+<tr id="<%= dom_id(transaction) %>">
+  <td><%= transaction.description %></td>
+  <td><%= transaction.category.name %></td>
+  <td><%= number_to_currency(transaction.value) %></td>
+  <td><%= l(transaction.date, format: :short) %></td>
+  <td class="text-end">
+      <%= link_to edit_transaction_path(transaction), class: "btn btn-warning btn-sm me-1", title: "Editar" do %>
+      <i class="bi bi-pencil-square"></i>
+      <% end %>
+
+      <%= link_to transaction_path(transaction),
+                    data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' },
+                    class: "btn btn-danger btn-sm", title: "Excluir" do %>
+      <i class="bi bi-trash"></i>
+      <% end %>
+  </td>
+</tr>

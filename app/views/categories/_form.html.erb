@@ -1,0 +1,10 @@
+<%= simple_form_for(@category) do |f| %>
+  <div class="mb-3">
+    <%= f.input :name, label: "Nome da categoria", required: true %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <%= link_to "Cancelar", categories_path, class: "btn btn-outline-secondary" %>
+    <%= f.button :submit, "Salvar", class: "btn btn-primary" %>
+  </div>
+<% end %>

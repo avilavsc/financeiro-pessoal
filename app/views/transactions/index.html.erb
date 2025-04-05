@@ -1,0 +1,58 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Transações</h2>
+                <%= link_to "Nova transação", new_transaction_path, class: "btn btn-success" %>
+            </div>
+
+            <%= search_form_for @q, url: transactions_path, method: :get, class: "row g-3 mb-4" do |f| %>
+            <div class="col-md-3">
+                <%= f.label :description_cont, "Descrição", class: "form-label" %>
+                <%= f.search_field :description_cont, class: "form-control" %>
+            </div>
+
+            <div class="col-md-3">
+                <%= f.label :category_id_eq, "Categoria", class: "form-label" %>
+                <%= f.collection_select :category_id_eq, Category.all, :id, :name,
+          { include_blank: "Todas" }, class: "form-select" %>
+            </div>
+
+            <div class="col-md-3">
+                <%= f.label :date_gteq, "Data inicial", class: "form-label" %>
+                <%= f.date_field :date_gteq, class: "form-control" %>
+            </div>
+
+            <div class="col-md-3">
+                <%= f.label :date_lteq, "Data final", class: "form-label" %>
+                <%= f.date_field :date_lteq, class: "form-control" %>
+            </div>
+
+            <div class="col-md-12 d-flex justify-content-end">
+                <%= f.submit "Filtrar", class: "btn btn-primary me-2" %>
+                <%= link_to "Limpar", transactions_path, class: "btn btn-outline-secondary" %>
+            </div>
+            <% end %>
+
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%= render @transactions %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
