@@ -1,0 +1,17 @@
+{
+  "name": "financeiro-pessoal",
+  "private": true,
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:watch": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.0"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5"
+  }
+}
