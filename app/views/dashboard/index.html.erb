@@ -1,2 +1,56 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-bg-success mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Receitas</h5>
+        <p class="card-text"><%= number_to_currency @total_receitas %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-bg-danger mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Despesas</h5>
+        <p class="card-text"><%= number_to_currency @total_despesas %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-bg-primary mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Saldo</h5>
+        <p class="card-text"><%= number_to_currency @saldo %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-8">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title">Despesas por Categoria</h5>
+        <canvas id="pieChart" style="max-width: 400px; margin: 0 auto;" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const ctx = document.getElementById('pieChart');
+    if (!ctx) return;
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: <%= raw @despesas_por_categoria.map { |id, _| @categoria_nomes[id] }.to_json %>,
+        datasets: [{
+          label: 'Despesas por Categoria',
+          data: <%= raw @despesas_por_categoria.values.to_json %>,
+          borderWidth: 1
+        }]
+      }
+    });
+  });
+</script>
