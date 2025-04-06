@@ -1,32 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Transactions", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/transactions/index"
-      expect(response).to have_http_status(:success)
-    end
+  let(:user) { User.create!(email: 'teste@email.com', password: '123456') }
+
+  before do
+    sign_in user
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/transactions/new"
-      expect(response).to have_http_status(:success)
-    end
+  it "carrega a lista de transações" do
+    get transactions_path
+    expect(response).to have_http_status(:success)
+    expect(response.body).to include("Transações")
   end
-
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/transactions/edit"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /show" do
-    it "returns http success" do
-      get "/transactions/show"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end

@@ -2,11 +2,13 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
 
+      <!-- Título e botão de nova categoria -->
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Categorias</h2>
-        <%= link_to "Nova categoria", new_category_path, class: "btn btn-success" %>
+        <h1 class="h3 mb-0">Categorias</h1>
+        <%= link_to "Nova Categoria", new_category_path, class: "btn btn-success" %>
       </div>
 
+      <!-- Tabela responsiva -->
       <div class="table-responsive">
         <table class="table table-hover align-middle">
           <thead class="table-light">
@@ -25,7 +27,7 @@
                   <% end %>
 
                   <%= link_to category_path(category),
-                      data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' },
+                      data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir esta categoria?" },
                       class: "btn btn-danger btn-sm", title: "Excluir" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>

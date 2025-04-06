@@ -4,13 +4,13 @@
 
       <div class="card shadow-sm">
         <div class="card-body">
-          <h2 class="mb-4">Nova Transação</h2>
+          <h1 class="h4 mb-4">Nova Transação</h1>
 
           <%= simple_form_for @transaction do |f| %>
 
             <!-- Toggle para tipo da transação -->
             <div class="mb-4">
-              <label class="form-label d-block">Tipo de Transação</label>
+              <label class="form-label d-block fw-semibold">Tipo de Transação</label>
 
               <div class="btn-group" role="group" aria-label="Tipo de Transação">
                 <% Transaction.transaction_types.keys.each do |type| %>
@@ -33,20 +33,20 @@
 
             <!-- Descrição e Valor -->
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-8 mb-3">
                 <%= f.input :description, label: "Descrição", required: true %>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 mb-3">
                 <%= f.input :value, label: "Valor", required: true, input_html: { step: 0.01 } %>
               </div>
             </div>
 
             <!-- Data e Categoria -->
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <%= f.input :date, as: :date, label: "Data", required: true %>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <%= f.input :category_id,
                             label: "Categoria",
                             collection: Category.all,
