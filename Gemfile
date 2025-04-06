@@ -62,3 +62,5 @@ gem "devise"
 gem "simple_form"
 gem "rspec-rails", group: [:development, :test]
 gem "ransack"
+gem 'rails-i18n'
+
